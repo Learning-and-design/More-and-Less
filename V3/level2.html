@@ -1,0 +1,212 @@
+<!-- This is Level 1 Presentation -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- For stop Zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Level 2</title>
+    <style>
+        /* @media screen and (orientation:landscape) { */
+        * {
+            margin: 0;
+            padding: 0;
+            orientation: "landscape";
+            overflow: hidden;
+            /* zoom: "reset"; */
+            /*  Hide scrollbars */
+        }
+
+        /* .c {
+                        margin: 0;
+                        padding: 0;
+                        overflow: hidden;   // Hide Scroll bar
+                        
+                    }   */
+
+        #loading {
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            position: fixed;
+            display: block;
+
+        }
+
+        #loading-text {
+            position: center;
+            font-size: medium;
+            /* color: white;   */
+            margin-top: 22%;
+            margin-left: 45%;
+            z-index: 100
+        }
+
+        @media only screen and (orientation:portrait) {
+
+
+            body {
+                margin: 0;
+                padding: 0;
+                /* width: inherit;
+                    height: inherit;  */
+                /* transform: rotate(90deg); */
+                orientation: "landscape";
+
+                overflow: hidden;
+
+                /*  Hide scrollbars */
+                /* background-image: url('./asset/Backgound.png'); */
+            }
+
+            html {
+                overflow: hidden;
+
+            }
+
+        }
+
+
+        #warning-message {
+            display: none;
+        }
+
+        @media only screen and (orientation:portrait) {
+            #wrapper {
+                display: none;
+                margin-top: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            body {
+
+
+                background-color: black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-image: url("https://images.unsplash.com/photo-1515595967223-f9fa59af5a3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8c2ltcGxlJTIwbmF0dXJlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+                /* Full height */
+                height: 100vh;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            #warning-message {
+                margin-top: 60%;
+                margin-left: 10%;
+                display: block;
+                font-size: xx-large;
+                font-style: bold;
+                background-color: #435688;
+                color: black;
+                width: 50%;
+                border: 15px solid green;
+                padding: 10%;
+            }
+
+            #level2 {
+                display: none;
+            }
+
+            h5 {
+                color: #fc0345;
+            }
+        }
+
+        @media only screen and (orientation:landscape) {
+            #warning-message {
+                display: none;
+            }
+        }
+
+
+        /* } */
+    </style>
+</head>
+
+<body>
+    <div id="fullWindow">
+        <script>
+            var landscapeMode = false
+
+            window.addEventListener("orientationchange", function () {
+                // alert("orientation Change ");
+                // console.log("event listner works")
+                // document.location.reload();
+
+                if (window.matchMedia("(orientation: portrait)").matches) {
+                    // alert("PORTRAIT");
+                    screen.orientation.lock("landscape")
+                    console.log("Screen Lock")
+                    console.log("landscape Active -- ")
+                    console.log(landscapeMode)
+                    landscapeMode = true
+                }
+                if (window.matchMedia("(orientation: landscape)").matches) {
+                    // alert("LANSCAPE");
+                    console.log("Portrait Active --")
+
+                }
+
+                if (landscapeMode == true) {
+                    landscapeMode = false
+                    window.location.reload()
+                    screen.orientation.lock("landscape")
+                    console.log("Screen Lock After Reload")
+                }
+            }, false);
+
+        </script>
+        <div id="warning-message">
+            This Game is only viewable in landscape mode
+            <h5>Rotate Your Phone</h5>
+        </div>
+
+        <div id="wrapper">
+            <!-- your html for your website -->
+
+            <div id="loading">
+                <!-- <img id="loading-image" src="../img/loading.gif" alt="Loading..." /> -->
+                <!-- <img id="loading-image" src="../asset/logo/loader.png" alt="Loading..." /> -->
+                <h1 id="loading-text">Loading.....</h1>
+            </div>
+            <canvas class="level2" id="level2">
+                <canvas class="homepopup" id="homepopup">
+                    <!-- <canvas id="pimg"></canvas> -->
+
+                    <script src="./three.min.js"></script>
+                    <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.138.2/build/three.min.js"></script> -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+                    <script src="./js/level2.js" type="module"></script>
+                    <!-- <script src="./js/level2Testing.js" type="module"></script> -->
+
+                    <!-- <script src='https://rawgit.com/jeromeetienne/threex.domevents/master/examples/vendor/three.js/build/three.min.js'></script> -->
+
+                    <!-- import Threex Here -->
+                    <!-- <script src='https://rawgit.com/jeromeetienne/threex.domevents/master/threex.domevents.js'></script> -->
+                    <script src='threex.domevents.js'></script>
+
+
+                    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+
+                    <!-- <script type="text/javascript" src="./node_modules/default-passive-events/dist/index.js"></script> -->
+                    <script
+                        src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+                </canvas>
+        </div>
+    </div>
+</body>
+
+</html>
